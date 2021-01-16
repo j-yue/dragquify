@@ -1,7 +1,7 @@
 import React from "react";
 import { AppProvider, Card } from "@shopify/polaris";
 import "@shopify/polaris/dist/styles.css";
-import SettingsTab from "./SettingsTab";
+import SettingsPanel from "./SettingsPanel";
 
 export default function App() {
   return (
@@ -20,10 +20,7 @@ export default function App() {
             </Card>
           </div>
           <div className="app__settings">
-            <SettingsTab />
-            {/* <Card title="Settings">
-              <p>Settings</p>
-            </Card> */}
+            <SettingsPanel />
           </div>
         </div>
       </div>
