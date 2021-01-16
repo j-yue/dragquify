@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "BIZ UDPGothic", sans-serif;
+  height: 100%;
+}
+
+.grid {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.grid__header {
+  background: #000;
+  color: #fff;
+  line-height: 2.5;
+  text-align: center;
+  font-style: italic;
+}
+
+.app {
+  padding: 1rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+}
+
+.app__preview {
+  width: 45%;
+}
+
+.app__settings {
+}
