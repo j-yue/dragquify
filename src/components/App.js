@@ -1,5 +1,7 @@
 import React from "react";
 import { AppProvider, Card } from "@shopify/polaris";
+import "@shopify/polaris/dist/styles.css";
+import SettingsTab from "./SettingsTab";
 
 export default function App() {
   return (
@@ -18,9 +20,10 @@ export default function App() {
             </Card>
           </div>
           <div className="app__settings">
-            <Card title="Settings">
+            <SettingsTab />
+            {/* <Card title="Settings">
               <p>Settings</p>
-            </Card>
+            </Card> */}
           </div>
         </div>
       </div>
