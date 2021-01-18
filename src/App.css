@@ -70,3 +70,7 @@ body {
   max-height: 100%;
   overflow-y: auto;
 }
+
+button:hover {
+  cursor: pointer;
+}

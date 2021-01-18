@@ -2,6 +2,7 @@ import React from "react";
 import { AppProvider, Card } from "@shopify/polaris";
 import "@shopify/polaris/dist/styles.css";
 import SettingsPanel from "./SettingsPanel";
+import ColorPicker from "./editor-ui/ColorPicker";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
           <div className="app__preview">
             <Card title="Preview">
               <p>preview</p>
+              <ColorPicker color="#066465" label="Background Color" />
             </Card>
           </div>
           <div className="app__settings">
