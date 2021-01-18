@@ -1,0 +1,17 @@
+.InputContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 0.4rem;
+  min-height: 16rem;
+  padding: 2rem;
+}
+
+.InputContainer--background {
+  background: #f9fafb;
+}
+
+.InputContainer--border {
+  border: 0.1rem solid #c4cdd5;
+}

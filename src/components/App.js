@@ -1,8 +1,14 @@
 import React from "react";
-import { AppProvider, Card } from "@shopify/polaris";
+import { AppProvider, Card, Button, ButtonGroup } from "@shopify/polaris";
 import "@shopify/polaris/dist/styles.css";
 import SettingsPanel from "./SettingsPanel";
-import ColorPicker from "./editor-ui/ColorPicker";
+import InputContainer from "./editor-ui/InputContainer";
+import {
+  FontPicker,
+  ImagePicker,
+  SelectSingle,
+  SelectList,
+} from "./editor-ui/ContainerInputs";
 
 export default function App() {
   return (
@@ -17,8 +23,15 @@ export default function App() {
           </div>
           <div className="app__preview">
             <Card title="Preview">
-              <p>preview</p>
-              <ColorPicker color="#066465" label="Background Color" />
+              <SelectSingle label="Select Collection" />
+              <SelectSingle label="Select Article" />
+              <SelectSingle label="Select Product" />
+              <SelectList label="Main Menu" />
+              <SelectList label="Secondary Menu" />
+              <SelectList label="Footer" />
+              <ImagePicker />
+              <FontPicker font="BIZ UDPGothic" style="bold" />
+              {/* <ColorPicker color="#066465" label="Background Color" /> */}
             </Card>
           </div>
           <div className="app__settings">
