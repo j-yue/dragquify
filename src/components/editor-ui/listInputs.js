@@ -6,10 +6,11 @@ import {
   TextContainer,
   DisplayText,
 } from "@shopify/polaris";
-import InputContainer from "./InputContainer";
+import "./listInputs.css";
 
 /*
-These components share the InputContainer layout but have some variations besides background color and border
+These components share the layout specified in the Container component but 
+have some variations besides background color and border
     - ListInput
         - collection, product, article, blog, page, link_list
         - centered button
@@ -19,20 +20,32 @@ These components share the InputContainer layout but have some variations beside
         - unique
  */
 
+function Container({ background, border, children }) {
+  return (
+    <div
+      className={`InputContainer ${
+        background ? "InputContainer--background" : ""
+      } ${border ? "InputContainer--border" : ""}`}
+    >
+      {children}
+    </div>
+  );
+}
+
 // collection, product, article, blog, page, linklist
 function ListInput({ label }) {
   return (
-    <InputContainer background border>
+    <Container background border>
       <Button>
         <TextStyle variation="strong">{label}</TextStyle>
       </Button>
-    </InputContainer>
+    </Container>
   );
 }
 
 function FontPicker({ style, font }) {
   return (
-    <InputContainer background border>
+    <Container background border>
       <TextContainer spacing="tight">
         <DisplayText size="large">{font}</DisplayText>
         <p>{style}</p>
@@ -40,18 +53,18 @@ function FontPicker({ style, font }) {
       <Button>
         <TextStyle variation="strong">Change</TextStyle>
       </Button>
-    </InputContainer>
+    </Container>
   );
 }
 
 function ImagePicker() {
   return (
-    <InputContainer border>
+    <Container border>
       <Button>
         <TextStyle variation="strong">Select Image</TextStyle>
       </Button>
       <Link>Explore free images</Link>
-    </InputContainer>
+    </Container>
   );
 }
 
