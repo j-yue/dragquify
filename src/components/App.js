@@ -4,6 +4,7 @@ import "@shopify/polaris/dist/styles.css";
 import SettingsPanel from "./SettingsPanel";
 
 import { ListInput, FontPicker, ImagePicker } from "./editor-ui/listInputs";
+import Richtext from "./editor-ui/Richtext";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           </div>
           <div className="app__preview">
             <Card title="Preview">
+              <Richtext value="123 somewhere place, 91210" />
               <ListInput label="Select collection" />
               <ListInput label="Select article" />
               <ListInput label="Select product" />

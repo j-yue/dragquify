@@ -1,0 +1,29 @@
+.richtext {
+  border-radius: 0.4rem;
+  border: 0.1rem solid #a9acb0;
+}
+.richtext__menubar {
+  background-color: #f9fafb;
+  padding: 1rem;
+  border-bottom: 0.1rem solid #a9acb0;
+}
+
+.richtext__menubar button {
+  border: none;
+  background: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.richtext__menubar button:hover {
+  background: rgba(33, 43, 54, 0.1);
+  transition: 0.5s;
+}
+
+.richtext__italic-btn {
+  margin: 0 0.5rem;
+}
+
+.richtext .Polaris-TextField__Backdrop {
+  border: none;
+}
