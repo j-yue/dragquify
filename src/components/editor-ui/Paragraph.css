@@ -1,0 +1,7 @@
+.preview__paragraph {
+  padding-bottom: 1rem;
+}
+
+.preview__paragraph + .preview__header {
+  border-top: 0.1rem solid #dfe3e8;
+}

@@ -29,11 +29,11 @@ export default function App() {
               <Header name="Body Styles" info="everthing" />
               <Paragraph text="All of your collections are listed by default. To customize your list, choose 'Selected' and add collections." />
               <Paragraph text="All of your collections are listed by default. To customize your list, choose 'Selected' and add collections." />
+              <Header name="Body Styles" info="everthing" />
+              <Header name="Body Styles" info="everthing" />
               <Paragraph text="All of your collections are listed by default. To customize your list, choose 'Selected' and add collections." />
               <Paragraph text="All of your collections are listed by default. To customize your list, choose 'Selected' and add collections." />
 
-              <Header name="Body Styles" info="everthing" />
-              <Header name="Body Styles" info="everthing" />
               <Url value="crochetboss.com" />
 
               <VideoUrl value="https://www.youtube.com/watch?v=_9VUPq3SxOc" />
