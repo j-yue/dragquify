@@ -5,7 +5,8 @@ import SettingsPanel from "./SettingsPanel";
 
 import { ListInput, FontPicker, ImagePicker } from "./editor-ui/listInputs";
 import Richtext from "./editor-ui/Richtext";
-
+import VideoUrl from "./editor-ui/VideoUrl";
+import Url from "./editor-ui/Url";
 export default function App() {
   return (
     <AppProvider>
@@ -19,6 +20,8 @@ export default function App() {
           </div>
           <div className="app__preview">
             <Card title="Preview">
+              <Url value="crochetboss.com" />
+              <VideoUrl value="https://www.youtube.com/watch?v=_9VUPq3SxOc" />
               <Richtext value="123 somewhere place, 91210" />
               <ListInput label="Select collection" />
               <ListInput label="Select article" />
