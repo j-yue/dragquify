@@ -1,0 +1,7 @@
+.preview__header + .preview__header {
+  border-top: 0.1rem solid #dfe3e8;
+}
+
+.preview__header > * {
+  margin: 1rem 0;
+}
