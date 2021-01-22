@@ -1,40 +1,13 @@
 import React from "react";
 import { Card, Button, ButtonGroup } from "@shopify/polaris";
+import { BASIC_INPUTS, SIDEBAR_SETTINGS, SPECIALIZED_INPUTS } from "./schema";
 
-const BASIC_INPUTS = [
-  "checkbox",
-  "radio",
-  "range",
-  "select",
-  "text",
-  "textarea",
-];
-
-const SPECIALIZED_INPUTS = [
-  "article",
-  "blog",
-  "collection",
-  "color",
-  "font picker",
-  "html",
-  "image picker",
-  "link list",
-  "page",
-  "product",
-  "richtext",
-  "url",
-  "video url",
-];
-
-const SIDEBAR_SETTINGS = ["header", "paragraph"];
-
-export default function SettingsPanel() {
+export default function SettingsPanel({ addInput: handleClick }) {
   const settings = [
-    { id: "sidebar", content: "Sidebar Settings", settings: SIDEBAR_SETTINGS },
-    { id: "basic", content: "Basic Inputs", settings: BASIC_INPUTS },
+    { name: "Sidebar Settings", settings: SIDEBAR_SETTINGS },
+    { name: "Basic Inputs", settings: BASIC_INPUTS },
     {
-      id: "specialized",
-      content: "Specialized Inputs",
+      name: "Specialized Inputs",
       settings: SPECIALIZED_INPUTS,
     },
   ];
@@ -48,15 +21,22 @@ export default function SettingsPanel() {
         </ButtonGroup>
       </Card.Section>
       <Card.Section title="Settings">
-        {settings.map((type) => (
-          <Card.Section title={type.id} key={type.id}>
-            <ButtonGroup>
-              {type.settings.map((index) => (
-                <Button key={index}>{index}</Button>
-              ))}
-            </ButtonGroup>
-          </Card.Section>
-        ))}
+        {settings.map(({ name, settings }) => {
+          return (
+            <Card.Section title={name}>
+              <ButtonGroup>
+                {settings.map((setting) => (
+                  <Button
+                    key={setting.name}
+                    onClick={() => handleClick(setting)}
+                  >
+                    {setting.name}
+                  </Button>
+                ))}
+              </ButtonGroup>
+            </Card.Section>
+          );
+        })}
       </Card.Section>
     </Card>
   );
