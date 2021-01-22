@@ -2,13 +2,13 @@ import React from "react";
 import { Card, TextField } from "@shopify/polaris";
 
 //render the input selected from the preview tab and
-//give each key besides "tag" a label and input field that user can change
+//give each key besides name and type keys a label and input field that user can change
 export default function SelectedPanel({ handleTextChange, selectedInput }) {
-  let tag, otherKeys;
-  //will not be rendering tag key because its value should be constant
+  let name, type, otherKeys;
+  //will not be rendering name and type key because its value should be constant
   selectedInput
-    ? ([tag, ...otherKeys] = Object.keys(selectedInput))
-    : ([tag, ...otherKeys] = []);
+    ? ([name, type, ...otherKeys] = Object.keys(selectedInput))
+    : ([name, type, ...otherKeys] = []);
 
   return (
     <Card
