@@ -80,7 +80,7 @@ export const SPECIALIZED_INPUTS = [
   {
     name: "collection",
     type: "collection",
-    label: "",
+    label: "collection",
     id: "collection info",
   },
   {
