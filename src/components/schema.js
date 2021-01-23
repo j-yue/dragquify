@@ -39,6 +39,7 @@ export const BASIC_INPUTS = [
     name: "select",
     type: "select",
     id: "",
+    label: "select label",
     default: "default",
     info: "info",
     options: [
