@@ -54,12 +54,15 @@ export const BASIC_INPUTS = [
     label: "Text",
     info: "info",
     placeholder: "placeholder text",
+    default: "default text",
   },
   {
     name: "textarea",
     type: "textarea",
     id: "",
     label: "Textarea",
+    placeholder: "textarea placeholder",
+    default: "Welcome to my shop!",
   },
 ];
 
