@@ -21,9 +21,9 @@ export default function SettingsPanel({ addInput: handleClick }) {
         </ButtonGroup>
       </Card.Section>
       <Card.Section title="Settings">
-        {settings.map(({ name, settings }) => {
+        {settings.map(({ name, settings }, index) => {
           return (
-            <Card.Section title={name}>
+            <Card.Section title={name} key={index}>
               <ButtonGroup>
                 {settings.map((setting) => (
                   <Button
