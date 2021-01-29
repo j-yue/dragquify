@@ -15,6 +15,7 @@ import Header from "./editor-ui/Header";
 import Paragraph from "./editor-ui/Paragraph";
 import Url from "./editor-ui/Url";
 import VideoUrl from "./editor-ui/VideoUrl";
+import Info from "./editor-ui/Info";
 
 import "./PreviewPanel.css";
 
@@ -27,10 +28,9 @@ export default function PreviewPanel({ inputs, handleClick, previewRef }) {
   );
 
   const inputToComponent = ({ name, label, ...rest }) => {
-    if (name === "header")
-      return <Header name={rest.content} info={rest.info} />;
+    if (name === "header") return <Header name={rest.content} />;
 
-    if (name === "paragraph") return <Paragraph text={name} />;
+    if (name === "paragraph") return <Paragraph text={rest.content} />;
 
     if (name === "checkbox")
       return (
@@ -118,13 +118,22 @@ export default function PreviewPanel({ inputs, handleClick, previewRef }) {
     else return <p>the input did not render correctly</p>;
   };
 
+  // all inputs except paragraph have the info attribute
+  const appendInfo = (input) => (
+    <React.Fragment>
+      {inputToComponent(input)}
+      {input.info && <Info text={input.info} />}
+    </React.Fragment>
+  );
+
   return (
     <React.Fragment>
       {inputs.map((input, index) => {
         return (
           <Card.Section key={index}>
             <div onClick={() => handleClick(index)} ref={previewRef}>
-              {inputToComponent(input)}
+              {input.name === "paragraph" && inputToComponent(input)}
+              {input.name !== "paragraph" && appendInfo(input)}
             </div>
           </Card.Section>
         );
