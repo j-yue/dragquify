@@ -103,8 +103,7 @@ export default function PreviewPanel({ inputs, handleClick, previewRef }) {
     if (name === "color")
       return <ColorPicker label={label} color={rest.default} />;
 
-    // not sure if font should be included; would need to fix FontPicker component
-    // if (name === "font") return "";
+    if (name === "font") return <FontPicker />;
 
     if (name === "image") return <ImagePicker />;
 
