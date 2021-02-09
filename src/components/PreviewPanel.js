@@ -103,7 +103,7 @@ export default function PreviewPanel({ inputs, handleClick, previewRef }) {
     if (name === "color")
       return <ColorPicker label={label} color={rest.default} />;
 
-    if (name === "font") return <FontPicker />;
+    if (name === "font") return <FontPicker style="bold" font="helvetica" />;
 
     if (name === "image") return <ImagePicker />;
 
