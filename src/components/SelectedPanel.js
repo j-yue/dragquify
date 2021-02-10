@@ -1,14 +1,39 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Card, TextField } from "@shopify/polaris";
+import Checkbox from "./exceptions/Checkbox";
 
 //render the input selected from the preview tab and
 //give each key besides name and type keys a label and input field that user can change
 export default function SelectedPanel({ handleTextChange, selectedInput }) {
   let name, type, otherKeys;
+
   //will not be rendering name and type key because its value should be constant
   selectedInput
     ? ([name, type, ...otherKeys] = Object.keys(selectedInput))
     : ([name, type, ...otherKeys] = []);
+
+  //keep track of input name
+  //will be used to check if selected input has fields that need to be rendered differently
+  const inputName = selectedInput ? selectedInput.name : "";
+
+  const renderKey = (key, index) => {
+    if (inputName === "checkbox" && key === "default")
+      return (
+        <Checkbox
+          choice={selectedInput.default}
+          handleTextChange={handleTextChange}
+          key={index}
+        />
+      );
+    return (
+      <TextField
+        label={key}
+        value={selectedInput[key]}
+        onChange={(e) => handleTextChange(key, e)}
+        key={index}
+      />
+    );
+  };
 
   return (
     <Card
@@ -27,15 +52,7 @@ export default function SelectedPanel({ handleTextChange, selectedInput }) {
     >
       {selectedInput && (
         <Card.Section>
-          {otherKeys.map((key) => {
-            return (
-              <TextField
-                label={key}
-                value={selectedInput[key]}
-                onChange={(e) => handleTextChange(key, e)}
-              />
-            );
-          })}
+          {otherKeys.map((key, index) => renderKey(key, index))}
         </Card.Section>
       )}
     </Card>
