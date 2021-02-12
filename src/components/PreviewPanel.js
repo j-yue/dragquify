@@ -65,7 +65,9 @@ export default function PreviewPanel({ inputs, handleClick, previewRef }) {
       );
 
     if (name === "select")
-      return <Select label={label} options={rest.options} />;
+      return (
+        <Select label={label} options={rest.options} value={rest.default} />
+      );
 
     if (name === "text")
       return (
