@@ -1,6 +1,7 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { Card, TextField } from "@shopify/polaris";
 import Checkbox from "./exceptions/Checkbox";
+import VideoUrl from "./exceptions/VideoUrl";
 
 //render the input selected from the preview tab and
 //give each key besides name and type keys a label and input field that user can change
@@ -25,12 +26,22 @@ export default function SelectedPanel({ handleTextChange, selectedInput }) {
           key={index}
         />
       );
+    if (inputName === "video url" && key === "accept")
+      return (
+        <VideoUrl
+          accept={selectedInput.accept}
+          handleTextChange={handleTextChange}
+          key={index}
+        />
+      );
     return (
       <TextField
         label={key}
         value={selectedInput[key]}
         onChange={(e) => handleTextChange(key, e)}
         key={index}
+        clearButton
+        onClearButtonClick={() => handleTextChange(key, "")}
       />
     );
   };
