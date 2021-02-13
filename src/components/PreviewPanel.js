@@ -40,15 +40,20 @@ export default function PreviewPanel({ inputs, handleClick, previewRef }) {
         />
       );
 
-    if (name === "radio")
+    if (name === "radio") {
+      const len = rest.options.length;
       return (
         <ChoiceList
           title={label}
-          choices={rest.options}
-          selected={rest.options[0].value}
+          choices={
+            len
+              ? rest.options
+              : [{ value: "value", label: "Options are empty" }]
+          }
+          selected={len ? rest.options[0].value : "value"}
         />
       );
-
+    }
     if (name === "range")
       return (
         <RangeSlider

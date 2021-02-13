@@ -3,6 +3,7 @@ import { Card, TextField } from "@shopify/polaris";
 import Checkbox from "./exceptions/Checkbox";
 import VideoUrl from "./exceptions/VideoUrl";
 import Default from "./exceptions/Default";
+import Options from "./exceptions/Options";
 
 //render the input selected from the preview tab and
 //give each key besides name and type keys a label and input field that user can change
@@ -35,19 +36,26 @@ export default function SelectedPanel({ handleTextChange, selectedInput }) {
           key={index}
         />
       );
-    if (
-      (inputName === "radio" || inputName === "select") &&
-      key === "default"
-    ) {
-      return (
-        <Default
-          options={selectedInput.options}
-          default={selectedInput.default}
-          handleTextChange={handleTextChange}
-          key={index}
-        />
-      );
+    if (inputName === "radio" || inputName === "select") {
+      if (key === "default")
+        return (
+          <Default
+            options={selectedInput.options}
+            default={selectedInput.default}
+            handleTextChange={handleTextChange}
+            key={index}
+          />
+        );
+      if (key === "options")
+        return (
+          <Options
+            options={selectedInput.options}
+            handleTextChange={handleTextChange}
+            key={index}
+          />
+        );
     }
+
     return (
       <TextField
         label={key}
