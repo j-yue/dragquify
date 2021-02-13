@@ -62,8 +62,8 @@ export default function SelectedPanel({ handleTextChange, selectedInput }) {
         value={selectedInput[key]}
         onChange={(e) => handleTextChange(key, e)}
         key={index}
-        clearButton
-        onClearButtonClick={() => handleTextChange(key, "")}
+        // multiline={key === "info" ? 5 : 1}
+        multiline
       />
     );
   };

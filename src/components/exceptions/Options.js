@@ -40,8 +40,6 @@ export default function Options({ options, handleTextChange }) {
               destructive: "true",
               onAction: () => handleDelete(index),
             }}
-            clearButton
-            onClearButtonClick={() => handleChange("", index)}
             key={index}
           />
         );
