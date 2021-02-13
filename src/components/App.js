@@ -46,7 +46,7 @@ export default function App() {
         block: "start",
         inline: "nearest",
       });
-  }, [inputs, previewRef]);
+  }, [inputs]);
 
   // selected panel
   // rerender whenever a new rendered input is clicked
