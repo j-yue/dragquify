@@ -29,6 +29,7 @@ export default function SettingsPanel({ addInput: handleClick }) {
                   <Button
                     key={setting.name}
                     onClick={() => handleClick(setting)}
+                    disabled={setting.name === "range" ? "disabled" : ""}
                   >
                     {setting.name}
                   </Button>
