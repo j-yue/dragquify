@@ -23,6 +23,14 @@ export default function App() {
   // onClick handler for SettingsPanel
   const addInput = (input) => handleInputChange([...inputs, input]);
 
+  // onClick handler for delete button in SelectedPanel
+  const removeCurrentInput = () => {
+    let updatedInputs = [...inputs];
+    updatedInputs.splice(selectedInputIndex, 1);
+    setSelectedInputIndex(0);
+    setInputs(updatedInputs);
+  };
+
   // onClick handler for PreviewPanel
   const handlePreviewClick = (index) => {
     setSelectedInputIndex(index);
@@ -64,6 +72,7 @@ export default function App() {
             <SelectedPanel
               handleTextChange={handleTextChange}
               selectedInput={selectedInput}
+              removeCurrentInput={removeCurrentInput}
             />
           </div>
 
@@ -73,6 +82,7 @@ export default function App() {
                 inputs={inputs}
                 previewRef={previewRef}
                 handleClick={handlePreviewClick}
+                handleInputChange={handleInputChange}
               />
             </Card>
           </div>

@@ -7,7 +7,11 @@ import Options from "./exceptions/Options";
 
 //render the input selected from the preview tab and
 //give each key besides name and type keys a label and input field that user can change
-export default function SelectedPanel({ handleTextChange, selectedInput }) {
+export default function SelectedPanel({
+  handleTextChange,
+  selectedInput,
+  removeCurrentInput,
+}) {
   let name, type, otherKeys;
 
   //will not be rendering name and type key because its value should be constant
@@ -62,7 +66,6 @@ export default function SelectedPanel({ handleTextChange, selectedInput }) {
         value={selectedInput[key]}
         onChange={(e) => handleTextChange(key, e)}
         key={index}
-        // multiline={key === "info" ? 5 : 1}
         multiline
       />
     );
@@ -75,11 +78,7 @@ export default function SelectedPanel({ handleTextChange, selectedInput }) {
         {
           content: "Delete",
           destructive: true,
-          onAction: () => console.log("deleting"),
-        },
-        {
-          content: "Output",
-          onAction: () => console.log("showing output"),
+          onAction: removeCurrentInput,
         },
       ]}
     >
