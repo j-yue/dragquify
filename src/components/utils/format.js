@@ -39,10 +39,12 @@ export const formatOutput = (output, tabSpace = 0) => {
 
       //recursive
       if (key === "options")
-        //typeof value is array
+        //array of objects
         store.push(stringifyKeyValue(key, formatOutput(value, 1)));
       else {
-        let formattedValue = `"${value}"`;
+        //need to output accept attr in video_url with brackets
+        let formattedValue = key === "accept" ? `"[${value}]"` : `"${value}"`;
+
         //checkbox default attr needs to be bool
         if (requiresBoolean(key, obj.type))
           formattedValue = strToBoolean(formattedValue);
