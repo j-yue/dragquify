@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { AppProvider, Card } from "@shopify/polaris";
+import { AppProvider, Card, Frame, Toast } from "@shopify/polaris";
 import "@shopify/polaris/dist/styles.css";
 import SettingsPanel from "./SettingsPanel";
 import PreviewPanel from "./PreviewPanel";
 import SelectedPanel from "./SelectedPanel";
+import ExportModal from "./ExportModal";
 
 export default function App() {
   // inputs added from SettingsPanel
@@ -14,6 +15,10 @@ export default function App() {
 
   // input selected from PreviewPanel
   const [selectedInputIndex, setSelectedInputIndex] = useState(0);
+
+  // output to be generated inputs to be shown in modal
+  const [showOutput, setShowOutput] = useState(false);
+  const toggleModal = () => setShowOutput(!showOutput);
 
   // ref for PreviewPanel
   const previewRef = React.createRef();
@@ -45,6 +50,19 @@ export default function App() {
     setInputs(updatedInputs);
   };
 
+  // message that displays when export code is copied to clipboard
+  const [toastActive, setToastActive] = useState(false);
+  // will display another message in case of error
+  const [toastContent, setToastContent] = useState("Copied!");
+  const toggleToastActive = (active) => setToastActive(active);
+  const toastMarkup = toastActive ? (
+    <Toast
+      onDismiss={toggleToastActive}
+      content={toastContent}
+      duration={2500}
+    />
+  ) : null;
+
   // preview panel
   // whenever input added, preview panel should scroll to it
   useEffect(() => {
@@ -65,32 +83,42 @@ export default function App() {
 
   return (
     <AppProvider>
-      <div className="grid">
-        <h1 className="grid__header">dragquify</h1>
-        <div className="app">
-          <div className="app__selected">
-            <SelectedPanel
-              handleTextChange={handleTextChange}
-              selectedInput={selectedInput}
-              removeCurrentInput={removeCurrentInput}
-            />
-          </div>
-
-          <div className="app__preview">
-            <Card title="Preview">
-              <PreviewPanel
-                inputs={inputs}
-                previewRef={previewRef}
-                handleClick={handlePreviewClick}
-                handleInputChange={handleInputChange}
+      <Frame>
+        {toastMarkup}
+        <ExportModal
+          inputs={inputs}
+          showOutput={showOutput}
+          toggleModal={toggleModal}
+          setToastActive={setToastActive}
+          setToastContent={setToastContent}
+        />
+        <div className="grid">
+          <h1 className="grid__header">dragquify</h1>
+          <div className="app">
+            <div className="app__selected">
+              <SelectedPanel
+                handleTextChange={handleTextChange}
+                selectedInput={selectedInput}
+                removeCurrentInput={removeCurrentInput}
               />
-            </Card>
-          </div>
-          <div className="app__settings">
-            <SettingsPanel addInput={addInput} />
+            </div>
+
+            <div className="app__preview">
+              <Card title="Preview">
+                <PreviewPanel
+                  inputs={inputs}
+                  previewRef={previewRef}
+                  handleClick={handlePreviewClick}
+                  handleInputChange={handleInputChange}
+                />
+              </Card>
+            </div>
+            <div className="app__settings">
+              <SettingsPanel addInput={addInput} toggleModal={toggleModal} />
+            </div>
           </div>
         </div>
-      </div>
+      </Frame>
     </AppProvider>
   );
 }
