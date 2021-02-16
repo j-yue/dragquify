@@ -27,3 +27,7 @@
 .richtext .Polaris-TextField__Backdrop {
   border: none;
 }
+
+.richtext__menubar + div {
+  padding: 1rem;
+}

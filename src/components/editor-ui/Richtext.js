@@ -1,6 +1,8 @@
 import React from "react";
 import { Icon, TextField } from "@shopify/polaris";
 import { LinkMinor } from "@shopify/polaris-icons";
+
+import { LabelWrap } from "../editor-ui/listInputs";
 import "./Richtext.css";
 
 const BoldIcon = `
@@ -15,21 +17,23 @@ const ItalicIcon = `
   </svg>
 `;
 
-export default function Richtext({ value }) {
+export default function Richtext({ ...props }) {
   return (
-    <div className="richtext">
-      <section className="richtext__menubar">
-        <button className="richtext__bold-btn">
-          <Icon source={BoldIcon} />
-        </button>
-        <button className="richtext__italic-btn">
-          <Icon source={ItalicIcon} />
-        </button>
-        <button className="richtext__link-btn">
-          <Icon source={LinkMinor} />
-        </button>
-      </section>
-      <TextField value={value} multiline={3} />
-    </div>
+    <LabelWrap label={props.label}>
+      <div className="richtext">
+        <section className="richtext__menubar">
+          <button className="richtext__bold-btn">
+            <Icon source={BoldIcon} />
+          </button>
+          <button className="richtext__italic-btn">
+            <Icon source={ItalicIcon} />
+          </button>
+          <button className="richtext__link-btn">
+            <Icon source={LinkMinor} />
+          </button>
+        </section>
+        <TextField {...props} multiline />
+      </div>
+    </LabelWrap>
   );
 }

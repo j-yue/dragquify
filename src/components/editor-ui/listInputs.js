@@ -32,40 +32,55 @@ function Container({ background, border, children }) {
   );
 }
 
+function LabelWrap({ label, children }) {
+  return (
+    <div>
+      <p className="preview__label">{label}</p>
+      {children}
+    </div>
+  );
+}
+
 // collection, product, article, blog, page, linklist
-function ListInput({ label }) {
+function ListInput({ ...props }) {
   return (
-    <Container background border>
-      <Button>
-        <TextStyle variation="strong">{label}</TextStyle>
-      </Button>
-    </Container>
+    <LabelWrap label={props.label}>
+      <Container background border>
+        <Button size="large">
+          <TextStyle variation="strong">{`Select ${props.name}`}</TextStyle>
+        </Button>
+      </Container>
+    </LabelWrap>
   );
 }
 
-function FontPicker({ style, font }) {
+function FontPicker({ ...props }) {
   return (
-    <Container background border>
-      <TextContainer spacing="tight">
-        <DisplayText size="large">{font}</DisplayText>
-        <p>{style}</p>
-      </TextContainer>
-      <Button>
-        <TextStyle variation="strong">Change</TextStyle>
-      </Button>
-    </Container>
+    <LabelWrap label={props.label}>
+      <Container background border>
+        <TextContainer spacing="tight">
+          <DisplayText size="large">{props.default}</DisplayText>
+          <p>bold</p>
+        </TextContainer>
+        <Button fullWidth size="large">
+          <TextStyle variation="strong">Change</TextStyle>
+        </Button>
+      </Container>
+    </LabelWrap>
   );
 }
 
-function ImagePicker() {
+function ImagePicker({ ...props }) {
   return (
-    <Container border>
-      <Button>
-        <TextStyle variation="strong">Select Image</TextStyle>
-      </Button>
-      <Link>Explore free images</Link>
-    </Container>
+    <LabelWrap label={props.label}>
+      <Container border>
+        <Button size="large">
+          <TextStyle variation="strong">Select Image</TextStyle>
+        </Button>
+        <Link>Explore free images</Link>
+      </Container>
+    </LabelWrap>
   );
 }
 
-export { ListInput, FontPicker, ImagePicker };
+export { ListInput, FontPicker, ImagePicker, LabelWrap };

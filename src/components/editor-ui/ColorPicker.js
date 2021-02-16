@@ -1,7 +1,9 @@
 import React from "react";
 import { Stack } from "@shopify/polaris";
 
-export default function ColorPicker({ color, label }) {
+export default function ColorPicker({ ...props }) {
+  const [color, label] = [props.default, props.label];
+
   const buttonStyle = {
     border: "none",
     background: color,
