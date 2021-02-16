@@ -8,6 +8,7 @@ import Options from "./exceptions/Options";
 //render the input selected from the preview tab and
 //give each key besides name and type keys a label and input field that user can change
 export default function SelectedPanel({
+  inputs,
   handleTextChange,
   selectedInput,
   removeCurrentInput,
@@ -74,13 +75,17 @@ export default function SelectedPanel({
   return (
     <Card
       title="Selected"
-      actions={[
-        {
-          content: "Delete",
-          destructive: true,
-          onAction: removeCurrentInput,
-        },
-      ]}
+      actions={
+        inputs.length
+          ? [
+              {
+                content: "Delete",
+                destructive: "true",
+                onAction: removeCurrentInput,
+              },
+            ]
+          : []
+      }
     >
       {selectedInput && (
         <Card.Section>
