@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { AppProvider, Card, Frame, Toast } from "@shopify/polaris";
 import "@shopify/polaris/dist/styles.css";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import SettingsPanel from "./SettingsPanel";
 import PreviewPanel from "./PreviewPanel";
 import SelectedPanel from "./SelectedPanel";
@@ -83,6 +84,21 @@ export default function App() {
     setSelectedInput(inputs[selectedInputIndex]);
   }, [selectedInputIndex, inputs]);
 
+  //used after dnd
+  const reorderInputs = (start, end) => {
+    const result = [...inputs];
+    const [removed] = result.splice(start, 1);
+    result.splice(end, 0, removed);
+    setInputs(result);
+  };
+
+  // handler for dnd
+  const onDragEnd = (result) => {
+    if (!result.destination) return;
+    if (result.destination.index === result.source.index) return;
+    reorderInputs(result.source.index, result.destination.index);
+  };
+
   return (
     <AppProvider>
       <Frame>
@@ -108,13 +124,21 @@ export default function App() {
 
             <div className="app__preview">
               <Card title="Preview">
-                <PreviewPanel
-                  inputs={inputs}
-                  selectedInputIndex={selectedInputIndex}
-                  previewRef={previewRef}
-                  handleClick={handlePreviewClick}
-                  handleInputChange={handleInputChange}
-                />
+                <DragDropContext onDragEnd={onDragEnd}>
+                  <Droppable droppableId="preview-panel">
+                    {(provided) => (
+                      <div ref={provided.innerRef} {...provided.droppableProps}>
+                        <PreviewPanel
+                          inputs={inputs}
+                          selectedInputIndex={selectedInputIndex}
+                          previewRef={previewRef}
+                          handleClick={handlePreviewClick}
+                          handleInputChange={handleInputChange}
+                        />
+                      </div>
+                    )}
+                  </Droppable>
+                </DragDropContext>
               </Card>
             </div>
             <div className="app__settings">

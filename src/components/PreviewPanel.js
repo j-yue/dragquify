@@ -8,6 +8,8 @@ import {
   ChoiceList,
 } from "@shopify/polaris";
 
+import { Draggable } from "react-beautiful-dnd";
+
 import { ListInput, FontPicker, ImagePicker } from "./editor-ui/listInputs";
 import ColorPicker from "./editor-ui/ColorPicker";
 import Richtext from "./editor-ui/Richtext";
@@ -141,19 +143,26 @@ export default function PreviewPanel({
     <React.Fragment>
       {inputs.map((input, index) => {
         return (
-          <div
-            className={
-              index === selectedInputIndex ? "preview__active-input" : ""
-            }
-            key={index}
-          >
-            <Card.Section>
-              <div onClick={() => handleClick(index)} ref={previewRef}>
-                {input.name === "paragraph" && inputToComponent(input)}
-                {input.name !== "paragraph" && appendInfo(input)}
+          <Draggable draggableId={`draggable-${index}`} index={index}>
+            {(provided) => (
+              <div
+                className={
+                  index === selectedInputIndex ? "preview__active-input" : ""
+                }
+                key={index}
+                ref={provided.innerRef}
+                {...provided.draggableProps}
+                {...provided.dragHandleProps}
+              >
+                <Card.Section>
+                  <div onClick={() => handleClick(index)} ref={previewRef}>
+                    {input.name === "paragraph" && inputToComponent(input)}
+                    {input.name !== "paragraph" && appendInfo(input)}
+                  </div>
+                </Card.Section>
               </div>
-            </Card.Section>
-          </div>
+            )}
+          </Draggable>
         );
       })}
     </React.Fragment>
