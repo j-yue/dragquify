@@ -4,6 +4,7 @@ import { ChoiceList } from "@shopify/polaris";
 //when selected input is a video url
 //render a checkbox for youtube and vimeo options
 export default function VideoUrl({ accept, handleTextChange }) {
+  console.log(accept);
   const [videos, setVideos] = useState(accept);
   const handleChange = (e) => {
     setVideos(e);
