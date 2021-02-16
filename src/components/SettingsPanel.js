@@ -2,7 +2,11 @@ import React from "react";
 import { Card, Button, ButtonGroup } from "@shopify/polaris";
 import { BASIC_INPUTS, SIDEBAR_SETTINGS, SPECIALIZED_INPUTS } from "./schema";
 
-export default function SettingsPanel({ addInput: handleClick, toggleModal }) {
+export default function SettingsPanel({
+  addInput: handleClick,
+  toggleModal,
+  clearInputs,
+}) {
   const settings = [
     { name: "Sidebar Settings", settings: SIDEBAR_SETTINGS },
     { name: "Basic Inputs", settings: BASIC_INPUTS },
@@ -16,7 +20,7 @@ export default function SettingsPanel({ addInput: handleClick, toggleModal }) {
     <Card>
       <Card.Section title="Actions">
         <ButtonGroup>
-          <Button>New</Button>
+          <Button onClick={clearInputs}>New</Button>
           <Button primary onClick={toggleModal}>
             Export
           </Button>

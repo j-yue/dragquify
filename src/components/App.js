@@ -25,8 +25,10 @@ export default function App() {
 
   const handleInputChange = (inputs) => setInputs(inputs);
 
-  // onClick handler for SettingsPanel
+  // onClick handler for adding inputs from SettingsPanel
   const addInput = (input) => handleInputChange([...inputs, input]);
+  // onClick handler for starting a new project
+  const clearInputs = () => setInputs([]);
 
   // onClick handler for delete button in SelectedPanel
   const removeCurrentInput = () => {
@@ -114,7 +116,11 @@ export default function App() {
               </Card>
             </div>
             <div className="app__settings">
-              <SettingsPanel addInput={addInput} toggleModal={toggleModal} />
+              <SettingsPanel
+                addInput={addInput}
+                toggleModal={toggleModal}
+                clearInputs={clearInputs}
+              />
             </div>
           </div>
         </div>
