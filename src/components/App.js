@@ -97,6 +97,7 @@ export default function App() {
     if (!result.destination) return;
     if (result.destination.index === result.source.index) return;
     reorderInputs(result.source.index, result.destination.index);
+    setSelectedInputIndex(result.destination.index);
   };
 
   return (
