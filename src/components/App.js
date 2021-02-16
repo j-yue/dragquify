@@ -110,6 +110,7 @@ export default function App() {
               <Card title="Preview">
                 <PreviewPanel
                   inputs={inputs}
+                  selectedInputIndex={selectedInputIndex}
                   previewRef={previewRef}
                   handleClick={handlePreviewClick}
                   handleInputChange={handleInputChange}

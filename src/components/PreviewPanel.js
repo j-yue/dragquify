@@ -19,7 +19,12 @@ import Info from "./editor-ui/Info";
 
 import "./PreviewPanel.css";
 
-export default function PreviewPanel({ inputs, handleClick, previewRef }) {
+export default function PreviewPanel({
+  inputs,
+  selectedInputIndex,
+  handleClick,
+  previewRef,
+}) {
   const LabelWrap = ({ label, children }) => (
     <React.Fragment>
       <p className="preview__label">{label}</p>
@@ -136,12 +141,19 @@ export default function PreviewPanel({ inputs, handleClick, previewRef }) {
     <React.Fragment>
       {inputs.map((input, index) => {
         return (
-          <Card.Section key={index}>
-            <div onClick={() => handleClick(index)} ref={previewRef}>
-              {input.name === "paragraph" && inputToComponent(input)}
-              {input.name !== "paragraph" && appendInfo(input)}
-            </div>
-          </Card.Section>
+          <div
+            className={
+              index === selectedInputIndex ? "preview__active-input" : ""
+            }
+            key={index}
+          >
+            <Card.Section>
+              <div onClick={() => handleClick(index)} ref={previewRef}>
+                {input.name === "paragraph" && inputToComponent(input)}
+                {input.name !== "paragraph" && appendInfo(input)}
+              </div>
+            </Card.Section>
+          </div>
         );
       })}
     </React.Fragment>
