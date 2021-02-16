@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Stack, RadioButton } from "@shopify/polaris";
+import { ChoiceList } from "@shopify/polaris";
 
 //when selected inputs is a checkbox
 //render the attr with two radio buttons
 //use this instead of textfield to avoid errors when typing
-export default function Checkbox({ choice, handleTextChange }) {
-  const [value, setValue] = useState(choice);
+export default function Checkbox({ handleTextChange, ...input }) {
+  const [value, setValue] = useState(input.default);
 
   const handleChange = (newValue) => {
     setValue(newValue);
@@ -13,20 +13,14 @@ export default function Checkbox({ choice, handleTextChange }) {
   };
 
   return (
-    <Stack>
-      <RadioButton
-        label="True"
-        checked={value === "true"}
-        id="true"
-        onChange={handleChange}
-      />
-
-      <RadioButton
-        label="False"
-        checked={value === "false"}
-        id="false"
-        onChange={handleChange}
-      />
-    </Stack>
+    <ChoiceList
+      title="Default"
+      choices={[
+        { label: "True", value: "true" },
+        { label: "False", value: "false" },
+      ]}
+      selected={value}
+      onChange={handleChange}
+    />
   );
 }
