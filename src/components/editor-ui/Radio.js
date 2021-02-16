@@ -9,7 +9,7 @@ export default function Radio({ ...props }) {
     <ChoiceList
       title={props.label}
       choices={len ? options : [{ value: "value", label: "Options are empty" }]}
-      selected={len ? options[0].value : "value"}
+      selected={props.default}
     />
   );
 }
