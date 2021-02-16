@@ -99,6 +99,7 @@ export default function App() {
           <div className="app">
             <div className="app__selected">
               <SelectedPanel
+                inputs={inputs}
                 handleTextChange={handleTextChange}
                 selectedInput={selectedInput}
                 removeCurrentInput={removeCurrentInput}
