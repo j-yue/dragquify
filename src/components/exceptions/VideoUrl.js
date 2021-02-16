@@ -8,7 +8,7 @@ export default function VideoUrl({ accept, handleTextChange }) {
   const handleChange = (e) => {
     setVideos(e);
     //update app state
-    handleTextChange("accept", [...e]);
+    handleTextChange("accept", e);
   };
 
   return (
