@@ -1,32 +1,26 @@
 import React, { useState } from "react";
-import { Checkbox, Stack } from "@shopify/polaris";
+import { ChoiceList } from "@shopify/polaris";
 
 //when selected input is a video url
 //render a checkbox for youtube and vimeo options
 export default function VideoUrl({ accept, handleTextChange }) {
   const [videos, setVideos] = useState(accept);
-
-  const handleChange = (e, source) => {
-    //adding source
-    if (e) setVideos([...videos, source]);
-    //remove source
-    if (!e) setVideos(videos.filter((i) => i !== source));
+  const handleChange = (e) => {
+    setVideos(e);
     //update app state
-    handleTextChange("accept", videos);
+    handleTextChange("accept", [...e]);
   };
 
   return (
-    <Stack>
-      <Checkbox
-        label="Youtube"
-        checked={videos.includes("youtube")}
-        onChange={(e) => handleChange(e, "youtube")}
-      />
-      <Checkbox
-        label="Vimeo"
-        checked={videos.includes("vimeo")}
-        onChange={(e) => handleChange(e, "vimeo")}
-      />
-    </Stack>
+    <ChoiceList
+      allowMultiple
+      title="accept"
+      choices={[
+        { label: "Vimeo", value: "vimeo" },
+        { label: "Youtube", value: "youtube" },
+      ]}
+      selected={videos}
+      onChange={handleChange}
+    />
   );
 }
