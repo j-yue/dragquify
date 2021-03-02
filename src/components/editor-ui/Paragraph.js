@@ -4,8 +4,8 @@ import "./Paragraph.css";
 
 export default function Paragraph({ ...props }) {
   return (
-    <p className="preview__paragraph">
+    <div className="preview__paragraph">
       <Info text={props.content} />
-    </p>
+    </div>
   );
 }
