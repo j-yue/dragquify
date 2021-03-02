@@ -2,6 +2,7 @@ import React from "react";
 import { Card, TextField } from "@shopify/polaris";
 
 import { KEY_TO_COMPONENT } from "./utils/keyToComponent";
+import "./SelectedPanel.css";
 
 //render the input selected from the preview tab and
 //give each key besides name and type keys a label and input field that user can change
@@ -33,12 +34,14 @@ export default function SelectedPanel({
     }
 
     return (
-      <TextField
-        label={key}
-        value={selectedInput[key]}
-        onChange={(e) => handleTextChange(key, e)}
-        multiline
-      />
+      <div className="selected__attribute">
+        <TextField
+          label={key}
+          value={selectedInput[key]}
+          onChange={(e) => handleTextChange(key, e)}
+          multiline
+        />
+      </div>
     );
   };
 
