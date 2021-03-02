@@ -31,17 +31,19 @@ export default function Options({ options, handleTextChange }) {
     <div>
       {_options.map((option, index) => {
         return (
-          <TextField
-            label={`Option ${index + 1}`}
-            value={option.value}
-            onChange={(e) => handleChange(e, index)}
-            labelAction={{
-              content: "Delete",
-              destructive: "true",
-              onAction: () => handleDelete(index),
-            }}
-            key={index}
-          />
+          <div className="selected__option">
+            <TextField
+              label={`Option ${index + 1}`}
+              value={option.value}
+              onChange={(e) => handleChange(e, index)}
+              labelAction={{
+                content: "Delete",
+                destructive: "true",
+                onAction: () => handleDelete(index),
+              }}
+              key={index}
+            />
+          </div>
         );
       })}
       <Button

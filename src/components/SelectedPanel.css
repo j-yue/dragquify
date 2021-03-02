@@ -1,3 +1,4 @@
-.selected__attribute {
+.selected__attribute,
+.selected__option {
   padding-bottom: 2rem;
 }

@@ -34,14 +34,12 @@ export default function SelectedPanel({
     }
 
     return (
-      <div className="selected__attribute">
-        <TextField
-          label={key}
-          value={selectedInput[key]}
-          onChange={(e) => handleTextChange(key, e)}
-          multiline
-        />
-      </div>
+      <TextField
+        label={key}
+        value={selectedInput[key]}
+        onChange={(e) => handleTextChange(key, e)}
+        multiline
+      />
     );
   };
 
@@ -63,7 +61,9 @@ export default function SelectedPanel({
       <Card.Section>
         {selectedInput &&
           otherKeys.map((key, index) => (
-            <div key={index}>{mapToComponent(key)}</div>
+            <div key={index} className="selected__attribute">
+              {mapToComponent(key)}
+            </div>
           ))}
       </Card.Section>
     </Card>
