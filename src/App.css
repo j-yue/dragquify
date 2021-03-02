@@ -54,10 +54,15 @@ button:hover {
 .grid__header {
   background: #000;
   color: #fff;
-  line-height: 2.5;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   font-style: italic;
   height: 4rem;
+  font-weight: bold;
+  font-size: 1.9rem;
 }
 
 .app {
