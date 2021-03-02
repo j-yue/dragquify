@@ -14,11 +14,13 @@ h6 {
 
 html {
   height: 100%;
+  font-size: 10px;
 }
 
 body {
   margin: 0;
   height: 100%;
+  font-size: 1.6rem;
 }
 
 #root {
