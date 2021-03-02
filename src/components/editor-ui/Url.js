@@ -4,7 +4,7 @@ import { CircleCancelMajor } from "@shopify/polaris-icons";
 
 export default function Url({ ...props }) {
   return (
-    <Stack>
+    <Stack alignment="trailing">
       <Stack.Item fill>
         <TextField placeholder="Paste link or search" {...props} />
       </Stack.Item>
