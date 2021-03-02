@@ -12,7 +12,6 @@ export default function PreviewPanel({
   inputs,
   selectedInputIndex,
   handleClick,
-  previewRef,
 }) {
   return (
     <React.Fragment>
@@ -36,7 +35,7 @@ export default function PreviewPanel({
                 {...provided.dragHandleProps}
               >
                 <Card.Section>
-                  <div onClick={() => handleClick(index)} ref={previewRef}>
+                  <div onClick={() => handleClick(index)}>
                     {Component && <Component {...input} />}
                     {input.name !== "paragraph" && <Info text={input.info} />}
                   </div>

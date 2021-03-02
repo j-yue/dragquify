@@ -21,9 +21,6 @@ export default function App() {
   const [showOutput, setShowOutput] = useState(false);
   const toggleModal = () => setShowOutput(!showOutput);
 
-  // ref for PreviewPanel
-  const previewRef = React.createRef();
-
   const handleInputChange = (inputs) => setInputs(inputs);
 
   // onClick handler for adding inputs from SettingsPanel
@@ -65,17 +62,6 @@ export default function App() {
       duration={2500}
     />
   ) : null;
-
-  // preview panel
-  // whenever input added, preview panel should scroll to it
-  useEffect(() => {
-    if (inputs.length)
-      previewRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "nearest",
-      });
-  }, [inputs]);
 
   // selected panel
   // rerender whenever a new rendered input is clicked
@@ -132,7 +118,6 @@ export default function App() {
                         <PreviewPanel
                           inputs={inputs}
                           selectedInputIndex={selectedInputIndex}
-                          previewRef={previewRef}
                           handleClick={handlePreviewClick}
                           handleInputChange={handleInputChange}
                         />
