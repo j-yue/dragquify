@@ -45,12 +45,17 @@ button:hover {
   height: 100%;
 }
 
+.Polaris-Frame {
+  height: 100%;
+}
+
 .grid {
   display: flex;
   flex-flow: column nowrap;
   height: 100%;
 }
 
+/*=================================================BLOCKS */
 .grid__header {
   background: #000;
   color: #fff;
@@ -63,6 +68,10 @@ button:hover {
   height: 4rem;
   font-weight: bold;
   font-size: 1.9rem;
+}
+
+.grid .Polaris-Card {
+  min-height: 100%;
 }
 
 .app {
@@ -90,12 +99,4 @@ button:hover {
 
 .app__selected {
   width: 30%;
-}
-
-.grid .Polaris-Card {
-  min-height: 100%;
-}
-
-.Polaris-Frame {
-  height: 100%;
 }
