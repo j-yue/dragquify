@@ -66,7 +66,6 @@ export default function App() {
   // selected panel
   // rerender whenever a new rendered input is clicked
   useEffect(() => {
-    console.log(`index is ${selectedInputIndex}`);
     setSelectedInput(inputs[selectedInputIndex]);
   }, [selectedInputIndex, inputs]);
 
