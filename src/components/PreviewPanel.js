@@ -22,7 +22,7 @@ export default function PreviewPanel({
           <Draggable
             draggableId={`draggable-${index}`}
             index={index}
-            ket={index}
+            key={index}
           >
             {(provided) => (
               <div
