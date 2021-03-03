@@ -5,7 +5,7 @@ import "./Header.css";
 export default function Header({ ...props }) {
   return (
     <div className="preview__header">
-      <Subheading>{props.name}</Subheading>
+      <Subheading>{props.content}</Subheading>
     </div>
   );
 }
