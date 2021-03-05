@@ -1,7 +1,10 @@
-.preview__header + .preview__header {
-  border-top: 0.1rem solid #dfe3e8;
+.preview__header > * {
+  margin: 1.6rem 0;
 }
 
-.preview__header > * {
-  margin: 1rem 0;
+/* any header thats not the first one has top border */
+div[data-rbd-draggable-context-id]
+  + div[data-rbd-draggable-context-id]
+  .preview__header {
+  border-top: 0.16rem solid #dfe3e8;
 }
