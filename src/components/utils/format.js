@@ -41,9 +41,8 @@ export const formatOutput = (output, tabSpace = 0) => {
       if (key === "options")
         //array of objects
         store.push(stringifyKeyValue(key, formatOutput(value, 1)));
-
       //skip info attribute if its empty, otherwise shopify throws error
-      if (key === "info" && value === "") break;
+      if (key === "info" && value === "");
       else {
         //need to output accept attr in video_url with brackets
         let formattedValue = key === "accept" ? `"[${value}]"` : `"${value}"`;
