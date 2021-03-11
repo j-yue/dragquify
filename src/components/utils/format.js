@@ -22,6 +22,8 @@ const createTabSpace = (num) => {
   return result;
 };
 
+const OPTIONAL_ATTRIBUTES = ["info", "placeholder"];
+
 //output is array
 //convert output into a readable string
 export const formatOutput = (output, tabSpace = 0) => {
@@ -41,8 +43,10 @@ export const formatOutput = (output, tabSpace = 0) => {
       if (key === "options")
         //array of objects
         store.push(stringifyKeyValue(key, formatOutput(value, 1)));
-      //skip info attribute if its empty, otherwise shopify throws error
-      if (key === "info" && value === "");
+
+      //skip info or placeholder attribute if they are empty, otherwise shopify themekit throws error
+      //required attributes that are blank will have themekit throw error
+      if (value === "" && OPTIONAL_ATTRIBUTES.includes(key));
       else {
         //need to output accept attr in video_url with brackets
         let formattedValue = key === "accept" ? `"[${value}]"` : `"${value}"`;
