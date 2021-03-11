@@ -1,5 +1,5 @@
 import React from "react";
-import { Icon, TextField } from "@shopify/polaris";
+import { Icon } from "@shopify/polaris";
 import { LinkMinor } from "@shopify/polaris-icons";
 
 import { LabelWrap } from "../editor-ui/listInputs";
