@@ -32,7 +32,13 @@ export default function Richtext({ ...props }) {
             <Icon source={LinkMinor} />
           </button>
         </section>
-        <TextField {...props} multiline />
+
+        {/* render default as html markup */}
+        <div
+          dangerouslySetInnerHTML={{
+            __html: props.default,
+          }}
+        ></div>
       </div>
     </LabelWrap>
   );
