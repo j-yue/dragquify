@@ -12,6 +12,9 @@ const stringifyKeyValue = (key, value) => `"${key}": ${value}`;
 const requiresBoolean = (key, type) => key === "default" && type === "checkbox";
 const strToBoolean = (str) => (str === "false" ? false : true);
 
+//stringify accept attributes value
+const stringifyAccept = (arr) => `[${arr.map((val) => `"${val}"`)}]`;
+
 //create num tab spaces
 const createTabSpace = (num) => {
   let result = "";
@@ -40,16 +43,19 @@ export const formatOutput = (output, tabSpace = 0) => {
       const value = obj[key];
 
       //recursive
-      if (key === "options")
+      if (key === "options") {
         //array of objects
         store.push(stringifyKeyValue(key, formatOutput(value, 1)));
+        break; //need to exit block or else options will be formatted
+      }
 
       //skip info or placeholder attribute if they are empty, otherwise shopify themekit throws error
       //required attributes that are blank will have themekit throw error
       if (value === "" && OPTIONAL_ATTRIBUTES.includes(key));
       else {
         //need to output accept attr in video_url with brackets
-        let formattedValue = key === "accept" ? `"[${value}]"` : `"${value}"`;
+        let formattedValue =
+          key === "accept" ? stringifyAccept(value) : `"${value}"`;
 
         //checkbox default attr needs to be bool
         if (requiresBoolean(key, obj.type))
